@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: notice-board
+  datasource:
+#    url: jdbc:mysql://localhost:3306/
+    url: jdbc:mysql://localhost:3306/notice_board?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: istj!@#06207191
+    driver-class-name: com.mysql.cj.jdbc.Driver
