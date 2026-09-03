@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class QuestionRepository {
 
-    private final String url = "";
+    private final String url = "jdbc:mysql://localhost:3306/notice_board?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private final String user = "root";
     private final String password = "istj!@#06207191";
 
@@ -16,7 +16,7 @@ public class QuestionRepository {
 
    // 글 등록
     public void insert(String subject, String content){
-        String sql = "INSERT INTO question (subject, content, create_date) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO question (subject, content, create_date) VALUES (?, ?, NOW())";
         try{
             Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
