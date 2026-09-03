@@ -17,7 +17,7 @@ public class QuestionRepositoryTest {
     @DisplayName("질문 등록 테스트")
     void testInsert(){
         assertDoesNotThrow(() -> {
-            questionRepository.insert("오늘의 일상", "운동일공부");
+            questionRepository.insert("안녕하세요", "운동일공부");
         });
     }
 
