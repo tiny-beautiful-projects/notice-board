@@ -1,4 +1,4 @@
-package yuna.notice_board;
+package yuna.notice_board.util;
 
 
 import org.springframework.jdbc.core.JdbcTemplate;

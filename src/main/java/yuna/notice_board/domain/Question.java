@@ -1,4 +1,4 @@
-package yuna.notice_board;
+package yuna.notice_board.domain;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
