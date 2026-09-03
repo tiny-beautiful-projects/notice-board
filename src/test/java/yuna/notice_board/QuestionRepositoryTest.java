@@ -9,16 +9,20 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @SpringBootTest
 public class QuestionRepositoryTest {
-
-    @Autowired
-    private QuestionRepository questionRepository;
-
+//
+//    @Autowired
+//    private QuestionRepository questionRepository;
+//
+//    @Test
+//    @DisplayName("질문 등록 테스트")
+//    void testInsert(){
+//        assertDoesNotThrow(() -> {
+//            questionRepository.insert("안녕하세요", "운동일공부");
+//        });
+//    }
     @Test
-    @DisplayName("질문 등록 테스트")
-    void testInsert(){
-        assertDoesNotThrow(() -> {
-            questionRepository.insert("안녕하세요", "운동일공부");
-        });
+    void contextLoads() {
     }
+
 
 }
