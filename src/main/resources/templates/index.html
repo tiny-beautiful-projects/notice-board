@@ -11,8 +11,7 @@
 <div class="board-container">
     <h1>질문 게시판</h1>
 
-    <!-- 질문 등록 폼 -->
-    <form action="/question/create" method="post" class="question-form">
+    <form id="questionForm" class="question-form">
         <div class="form-group">
             <label for="subject">제목</label>
             <input type="text" id="subject" name="subject" placeholder="제목을 입력하세요" required>
@@ -23,7 +22,6 @@
         </div>
         <button type="submit" class="btn-submit">질문 등록</button>
     </form>
-
     <!-- 질문 목록 테이블 -->
     <table>
         <thead>
@@ -42,6 +40,35 @@
         </tbody>
     </table>
 </div>
+<!-- 비동기 처리를 위한 자바스크립트 -->
+<script>
+    document.getElementById("questionForm").addEventListener("submit", function(event){
+        // 브라우저의 기본 submit 동작(페이지 이동/새로고침)을 막습니다.
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
 
+        // Fetch API를 이용해 페이지 이동 없이 서버로 POST 요청을 보냅니다.
+        fetch("/question/create", {
+            method:"POST",
+            body: formData,
+        }).then((response)=> {
+            if(response.ok){
+                return response.text();
+            }
+            throw new Error("서버 전송 실패")
+        }).then((result)=> {
+            // 저장이 완료되면 입력창을 비우고 페이지를 새로고침하여 최신 DB 데이터를 반영합니다.
+            if(result === "success"){
+                form.reset();
+                location.reload();
+            }
+        }).catch((error)=> {
+            console.error('Error:', error);
+            alert('오류가 발생했습니다.');
+        })
+
+    })
+</script>
 </body>
 </html>
