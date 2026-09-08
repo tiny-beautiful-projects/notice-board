@@ -3,7 +3,9 @@ spring:
     name: notice-board
   datasource:
 #    url: jdbc:mysql://localhost:3306/
-    url: jdbc:mysql://localhost:3306/notice_board?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+#    url: jdbc:mysql://localhost:3306/notice_board?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#    username: ${DB_USER}
+#    password: ${DB_PASSWORD}
+    username: user1
+    password: abcABC123!@#
     driver-class-name: com.mysql.cj.jdbc.Driver
