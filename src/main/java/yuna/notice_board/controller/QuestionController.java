@@ -32,8 +32,17 @@ public class QuestionController {
         return "index";
     }
 
+    // 게시판 상세 조회
+    @GetMapping("/detail")
+    public String questionDetail(@RequestParam("id") Long id, Model model){
+        Question question = questionRepository.findById(id);
+        model.addAttribute("question", question);
+        return "detail";
+    }
+
     // 질문 등록 처리
-    @PostMapping("/question/create") // 클라이언트로부터 /question/create 주소로 들어오는 HTTP POST 요청을 이 메서드와 연결(매핑)
+    @PostMapping("/question/create")
+    // 클라이언트로부터 /question/create 주소로 들어오는 HTTP POST 요청을 이 메서드와 연결(매핑)
     // ResponseBody: 메서드가 리턴하는 값("success")을 타임리프 같은 HTML 뷰 파일 이름으로 인식하지 않고, 문자열 데이터 그 자체를 HTTP 응답 본문(Body)에 담아 클라이언트(브라우저)로 바로 전달합니다.
     // 화면 이동 없이 결과를 주고받는 AJAX 통신에서 필수적인 어노테이션
     @ResponseBody

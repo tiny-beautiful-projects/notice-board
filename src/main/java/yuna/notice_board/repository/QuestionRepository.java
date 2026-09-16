@@ -27,6 +27,17 @@ public class QuestionRepository {
         String sql = "SELECT id, subject, content, create_date FROM question";
         return jdbcTemplate.query(sql, questionRowMapper());
     }
+    // 글 상세 조회
+    public Question findById(Long id){
+        String sql = "SELECT id, subject, content, create_date FROM question WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, questionRowMapper(), id);
+    }
+
+    /**
+     * SQL 쿼리를 실행하면 데이터베이스는 테이블 형태의 결과(ResultSet)를 반환합니다
+     * 하지만 자바 진영에서는 이 데이터를 다루기 위해 객체(Question 인스턴스)가 필요
+     * RowMapper는 ResultSet의 각 행(Row)을 돌며 아래와 같이 데이터베이스의 컬럼 값을 자바 객체에 쏙쏙 집어넣어 주는 번역가 역할
+     */
     private RowMapper<Question> questionRowMapper() {
         return (rs, rowNum) -> {
             System.out.println(">>> rowNum: " + rs);
