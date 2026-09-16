@@ -32,10 +32,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question : ${questionList}">
-            <td th:text="${question.id}">1</td>
-            <td th:text="${question.subject}">제목 예시</td>
-            <td th:text="${question.createDate}">2026-04-23</td>
+        <tr th:each="question : ${questionList}" th:onClick="|location.href='@{/detail(id=${question.id})}'|">
+            <td th:text="${question.id}"></td>
+            <td th:text="${question.subject}"></td>
+            <td th:text="${question.createDate}"></td>
         </tr>
         </tbody>
     </table>

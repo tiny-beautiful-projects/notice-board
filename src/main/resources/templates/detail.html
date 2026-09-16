@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>질문 상세 내용</title>
+    <!-- 제공해주신 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/detail.css}">
 </head>
 <body>
-    디테일
+
+<div class="board-container">
+    <h1>질문 상세 내용</h1>
+
+    <!-- 상세 내용 감싸는 박스 -->
+    <div class="detail-box-wrap">
+
+        <!-- 번호 -->
+        <div class="detail-group">
+            <label>번호</label>
+            <div class="detail-value" th:text="${question.id}">1</div>
+        </div>
+
+        <!-- 제목 -->
+        <div class="detail-group">
+            <label>제목</label>
+            <div class="detail-value" th:text="${question.subject}">제목이 들어갑니다.</div>
+        </div>
+
+        <!-- 등록일시 -->
+        <div class="detail-group">
+            <label>등록일시</label>
+            <div class="detail-value" th:text="${question.createDate}">2026-04-24</div>
+        </div>
+
+        <!-- 내용 -->
+        <div class="detail-group">
+            <label>내용</label>
+            <div class="detail-value detail-content" th:text="${question.content}">내용이 들어갑니다.</div>
+        </div>
+
+    </div>
+
+    <!-- 하단 목록 버튼 -->
+    <div class="detail-actions">
+        <a href="/" class="btn-secondary">목록으로</a>
+    </div>
+</div>
+
 </body>
 </html>

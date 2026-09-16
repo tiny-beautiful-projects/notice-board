@@ -1,0 +1,77 @@
+/* ===================== 상세 페이지 스타일 ===================== */
+
+/* 상세 내용 전체 박스 (질문 등록 폼과 비슷한 무드) */
+.detail-box-wrap {
+    background: #f8f9fb;
+    border: 1px solid #eef0f3;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* 개별 항목 그룹 */
+.detail-group {
+    margin-bottom: 20px;
+}
+
+.detail-group:last-child {
+    margin-bottom: 0;
+}
+
+/* 항목 레이블 (제목, 번호, 내용 등) */
+.detail-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 6px;
+}
+
+/* 텍스트나 번호가 들어가는 박스 영역 */
+.detail-value {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #212529;
+    box-sizing: border-box;
+}
+
+/* 내용(Content) 전용 박스 (여러 줄바꿈 및 최소 높이 보장) */
+.detail-content {
+    min-height: 150px;
+    white-space: pre-line; /* 줄바꿈 유지 */
+    line-height: 1.5;
+    color: #495057;
+}
+
+/* 하단 버튼 정렬 영역 */
+.detail-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* 목록으로 돌아가기 버튼 (서브 버튼 스타일) */
+.btn-secondary {
+    display: inline-block;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+    color: #212529;
+}

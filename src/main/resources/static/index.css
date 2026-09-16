@@ -164,3 +164,7 @@ td:nth-child(2) {
     color: #212529;
     font-weight: 500;
 }
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
