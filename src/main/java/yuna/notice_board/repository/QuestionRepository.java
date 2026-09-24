@@ -33,6 +33,12 @@ public class QuestionRepository {
         return jdbcTemplate.queryForObject(sql, questionRowMapper(), id);
     }
 
+
+    public void update(Long id, String subject, String content){
+        String sql = "UPDATE question SET subject = ?, content = ? WHERE id = ?";
+        jdbcTemplate.update(sql, subject, content, id);
+    }
+
     /**
      * SQL 쿼리를 실행하면 데이터베이스는 테이블 형태의 결과(ResultSet)를 반환합니다
      * 하지만 자바 진영에서는 이 데이터를 다루기 위해 객체(Question 인스턴스)가 필요

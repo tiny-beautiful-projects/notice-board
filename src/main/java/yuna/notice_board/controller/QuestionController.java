@@ -52,4 +52,13 @@ public class QuestionController {
     }
 
 
+    // 질문 수정 처리
+    @PostMapping("/question/update")
+    public String updateQuestion(@RequestParam("id") Long id, @RequestParam("subject") String subject, @RequestParam("content") String content){
+        questionRepository.update(id, subject, content);
+        //  /detail?id=글번호 주소로 아예 새로고침해서 이동(Redirect)하라고 명령
+        return "redirect:/";
+    }
+
+
 }

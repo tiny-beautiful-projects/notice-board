@@ -15,8 +15,12 @@
 
 <div class="board-container">
     <h1>질문 상세 내용</h1>
+   <!--  폼(form) 안에 작성된 데이터를 들고 /question/update라는 서버의 주소(URL)로 이동(전송)하라는 뜻-->
+   <!--   Controller의 @PostMapping("/question/update") 메서드와 연결  -->
     <form action="/question/update" method="post">
 
+      <!-- 서버에게 내가 지금 수정하고 있는 글의 고유 번호(id)가 몇 번인지 알려주는 표지판 역할-->
+        <input type="hidden" name="id" th:value="${question.id}">
         <!-- 상세 내용 감싸는 박스 -->
         <div class="detail-box-wrap">
             <!-- 번호 -->
