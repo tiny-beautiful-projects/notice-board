@@ -5,46 +5,75 @@
     <title>질문 상세 내용</title>
     <!-- 제공해주신 외부 CSS 파일 연결 -->
     <link rel="stylesheet" type="text/css" th:href="@{/detail.css}">
+    <style>
+        .edit-mode {
+            display:none;
+        }
+    </style>
 </head>
 <body>
 
 <div class="board-container">
     <h1>질문 상세 내용</h1>
+    <form action="/question/update" method="post">
 
-    <!-- 상세 내용 감싸는 박스 -->
-    <div class="detail-box-wrap">
+        <!-- 상세 내용 감싸는 박스 -->
+        <div class="detail-box-wrap">
+            <!-- 번호 -->
+            <div class="detail-group">
+                <label>번호</label>
+                <div class="detail-value" th:text="${question.id}">1</div>
+            </div>
+            <!-- 제목 -->
+            <div class="detail-group">
+                <label>제목</label>
+                <!-- 읽기 모드 (평소에 보임) -->
+                <div class="detail-value view-mode" th:text="${question.subject}">제목이 들어갑니다.</div>
+                <!-- 편집 모드 (수정하기를 누르면 보임) -->
+                <input type="text" name="subject" class="detail-input edit-mode" th:value="${question.subject}">
+            </div>
 
-        <!-- 번호 -->
-        <div class="detail-group">
-            <label>번호</label>
-            <div class="detail-value" th:text="${question.id}">1</div>
+            <!-- 등록일시 -->
+            <div class="detail-group">
+                <label>등록일시</label>
+                <div class="detail-value" th:text="${question.createDate}">2026-04-24</div>
+            </div>
+
+            <!-- 내용 -->
+            <div class="detail-group">
+                <label>내용</label>
+                <!-- 읽기 모드 (평소에 보임) -->
+                <div class="detail-value detail-content view-mode" th:text="${question.content}">내용이 들어갑니다.</div>
+                <!-- 편집 모드 (수정하기를 누르면 보임) -->
+                <textarea name="content" class="detail-content-textarea edit-mode" th:text="${question.content}"></textarea>
+            </div>
         </div>
 
-        <!-- 제목 -->
-        <div class="detail-group">
-            <label>제목</label>
-            <div class="detail-value" th:text="${question.subject}">제목이 들어갑니다.</div>
+        <!-- 하단  버튼 -->
+        <div class="detail-actions">
+            <a href="/" class="btn-secondary">목록으로</a>
+            <!-- [수정하기] 버튼: 평소에 보이다가 누르면 숨겨짐 -->
+            <button type="button" id="btnEdit" class="btn-primary" onClick="enableEditMode()">수정하기</button>
+            <!-- [저장하기] 버튼: 평소에 숨겨져 있다가 [수정하기]를 누르면 나타남 (type="submit") -->
+            <button type="submit" id="btnSave" class="btn-primary edit-mode">저장하기</button>
         </div>
-
-        <!-- 등록일시 -->
-        <div class="detail-group">
-            <label>등록일시</label>
-            <div class="detail-value" th:text="${question.createDate}">2026-04-24</div>
-        </div>
-
-        <!-- 내용 -->
-        <div class="detail-group">
-            <label>내용</label>
-            <div class="detail-value detail-content" th:text="${question.content}">내용이 들어갑니다.</div>
-        </div>
-
-    </div>
-
-    <!-- 하단 목록 버튼 -->
-    <div class="detail-actions">
-        <a href="/" class="btn-secondary">목록으로</a>
-    </div>
+    </form>
 </div>
+<script>
+  function enableEditMode(){
+      // 1. 읽기 전용 텍스트들 숨기기
+      document.querySelectorAll('.view-mode').forEach((el)=> {
+          el.style.display = 'none'
+      })
+      // 2. 편집용 input, textarea창들 보이기
+      document.querySelectorAll(".edit-mode").forEach((el)=> {
+          el.style.display = "block"
+      })
+      // 3. 버튼 [수정하기]는 숨기고, [저장하기] 는 보이게 처리
+      document.getElementById('btnEdit').style.display = "none";
+      document.getElementById("btnSave").style.display = "inline-block";
+  }
+</script>
 
 </body>
 </html>

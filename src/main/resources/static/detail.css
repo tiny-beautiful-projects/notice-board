@@ -27,7 +27,7 @@
     margin-bottom: 6px;
 }
 
-/* 텍스트나 번호가 들어가는 박스 영역 */
+/* 텍스트나 번호가 들어가는 박스 영역 (읽기 모드) */
 .detail-value {
     width: 100%;
     padding: 12px 14px;
@@ -48,14 +48,59 @@
     color: #495057;
 }
 
+/* ===================== [추가/수정] 편집 모드 입력창 스타일 ===================== */
+
+/* 제목 입력용 input (detail-value와 완전히 동일한 크기/테두리 룩) */
+.detail-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #212529;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 내용 수정용 textarea (detail-content와 완벽히 호환) */
+.detail-content-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #212529;
+    box-sizing: border-box;
+    outline: none;
+    resize: vertical; /* 세로 크기 조절 허용 */
+    line-height: 1.5;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* 입력창 포커스 효과 (클릭했을 때 파란 테두리) */
+.detail-input:focus,
+.detail-content-textarea:focus {
+    border-color: #228be6;
+    box-shadow: 0 0 0 3px rgba(34, 139, 230, 0.15);
+}
+
+/* ===================== 버튼 스타일 ===================== */
+
 /* 하단 버튼 정렬 영역 */
 .detail-actions {
     display: flex;
     justify-content: flex-end;
+    gap: 8px; /* 버튼 사이 간격 */
     margin-top: 24px;
 }
 
-/* 목록으로 돌아가기 버튼 (서브 버튼 스타일) */
+/* 목록으로 돌아가기 버튼 (서브) */
 .btn-secondary {
     display: inline-block;
     padding: 11px 24px;
@@ -67,11 +112,29 @@
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn-secondary:hover {
     background-color: #f8f9fa;
     border-color: #ced4da;
-    color: #212529;
+}
+
+/* 수정하기 / 저장하기 버튼 (메인 포인트) */
+.btn-primary {
+    display: inline-block;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #228be6;
+    border: 1px solid #228be6;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+    background: #1c7ed6;
 }
